@@ -6,7 +6,7 @@
 #
 Name     : dulwich
 Version  : 0.19.9
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz
 Source99 : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz.asc
@@ -72,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542512126
+export SOURCE_DATE_EPOCH=1542513931
 python3 setup.py build
 
 %install
