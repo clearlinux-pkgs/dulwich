@@ -6,7 +6,7 @@
 #
 Name     : dulwich
 Version  : 0.19.9
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz
 Source99 : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz.asc
