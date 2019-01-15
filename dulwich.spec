@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.19.9
-Release  : 9
-URL      : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz
-Source99 : https://files.pythonhosted.org/packages/b1/f5/65b17f6e1232851b05e9498573f2dda6692e6b115a75f60007698eedb189/dulwich-0.19.9.tar.gz.asc
+Version  : 0.19.10
+Release  : 10
+URL      : https://files.pythonhosted.org/packages/34/00/4ec53616000991d78fe49808a3d435db1b0f8ffccbacd8282b7bb9fad60e/dulwich-0.19.10.tar.gz
+Source0  : https://files.pythonhosted.org/packages/34/00/4ec53616000991d78fe49808a3d435db1b0f8ffccbacd8282b7bb9fad60e/dulwich-0.19.10.tar.gz
+Source99 : https://files.pythonhosted.org/packages/34/00/4ec53616000991d78fe49808a3d435db1b0f8ffccbacd8282b7bb9fad60e/dulwich-0.19.10.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -18,6 +18,7 @@ Requires: dulwich-license = %{version}-%{release}
 Requires: dulwich-python = %{version}-%{release}
 Requires: dulwich-python3 = %{version}-%{release}
 Requires: certifi
+Requires: fastimport
 Requires: urllib3
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
@@ -25,9 +26,9 @@ BuildRequires : gevent
 BuildRequires : urllib3
 
 %description
-Openstack Swift as backend for Dulwich
-======================================
-Fabien Boucher <fabien.boucher@enovance.com>
+.. image:: https://travis-ci.org/dulwich/dulwich.png?branch=master
+:alt: Build Status
+:target: https://travis-ci.org/dulwich/dulwich
 
 %package bin
 Summary: bin components for the dulwich package.
@@ -65,14 +66,15 @@ python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.19.9
+%setup -q -n dulwich-0.19.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542513931
+export SOURCE_DATE_EPOCH=1547574068
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
