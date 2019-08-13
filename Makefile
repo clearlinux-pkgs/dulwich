@@ -1,5 +1,5 @@
 PKG_NAME := dulwich
-URL = https://files.pythonhosted.org/packages/2e/02/42ce6e45a206ccb044d8a3296646497e96b5263624e5862d21da947b9d59/dulwich-0.19.11.tar.gz
+URL = https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

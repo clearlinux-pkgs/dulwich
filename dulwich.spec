@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.19.11
-Release  : 13
-URL      : https://files.pythonhosted.org/packages/2e/02/42ce6e45a206ccb044d8a3296646497e96b5263624e5862d21da947b9d59/dulwich-0.19.11.tar.gz
-Source0  : https://files.pythonhosted.org/packages/2e/02/42ce6e45a206ccb044d8a3296646497e96b5263624e5862d21da947b9d59/dulwich-0.19.11.tar.gz
-Source99 : https://files.pythonhosted.org/packages/2e/02/42ce6e45a206ccb044d8a3296646497e96b5263624e5862d21da947b9d59/dulwich-0.19.11.tar.gz.asc
+Version  : 0.19.12
+Release  : 14
+URL      : https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz
+Source0  : https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz
+Source1 : https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -22,6 +22,7 @@ Requires: fastimport
 Requires: urllib3
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
+BuildRequires : fastimport
 BuildRequires : gevent
 BuildRequires : urllib3
 
@@ -66,18 +67,25 @@ python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.19.11
+%setup -q -n dulwich-0.19.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1549555592
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1565731150
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dulwich
 cp COPYING %{buildroot}/usr/share/package-licenses/dulwich/COPYING
