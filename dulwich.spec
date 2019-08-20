@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.19.12
-Release  : 14
-URL      : https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz
-Source0  : https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz
-Source1 : https://files.pythonhosted.org/packages/94/c2/feb3ad542c37bf433240d4390f17bc7a8ac347b42f286b4496e43431ba08/dulwich-0.19.12.tar.gz.asc
+Version  : 0.19.13
+Release  : 15
+URL      : https://files.pythonhosted.org/packages/44/26/d0c3930418e57e79f30766fe1dd536a8863fe3e443efaf6574e66d33264a/dulwich-0.19.13.tar.gz
+Source0  : https://files.pythonhosted.org/packages/44/26/d0c3930418e57e79f30766fe1dd536a8863fe3e443efaf6574e66d33264a/dulwich-0.19.13.tar.gz
+Source1 : https://files.pythonhosted.org/packages/44/26/d0c3930418e57e79f30766fe1dd536a8863fe3e443efaf6574e66d33264a/dulwich-0.19.13.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -67,14 +67,14 @@ python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.19.12
+%setup -q -n dulwich-0.19.13
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565731150
+export SOURCE_DATE_EPOCH=1566308593
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
