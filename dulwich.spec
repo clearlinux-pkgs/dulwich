@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.19.14
-Release  : 18
-URL      : https://files.pythonhosted.org/packages/16/be/35e2a147f067894ca2e5b6c43e4e15c95083c6a4a04666cd969217b74175/dulwich-0.19.14.tar.gz
-Source0  : https://files.pythonhosted.org/packages/16/be/35e2a147f067894ca2e5b6c43e4e15c95083c6a4a04666cd969217b74175/dulwich-0.19.14.tar.gz
-Source1 : https://files.pythonhosted.org/packages/16/be/35e2a147f067894ca2e5b6c43e4e15c95083c6a4a04666cd969217b74175/dulwich-0.19.14.tar.gz.asc
+Version  : 0.19.15
+Release  : 19
+URL      : https://files.pythonhosted.org/packages/61/9e/975cd95e7b15f71ff29307a02fc61d232d07cc3b66519ca43aceff0cde10/dulwich-0.19.15.tar.gz
+Source0  : https://files.pythonhosted.org/packages/61/9e/975cd95e7b15f71ff29307a02fc61d232d07cc3b66519ca43aceff0cde10/dulwich-0.19.15.tar.gz
+Source1  : https://files.pythonhosted.org/packages/61/9e/975cd95e7b15f71ff29307a02fc61d232d07cc3b66519ca43aceff0cde10/dulwich-0.19.15.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -67,15 +67,15 @@ python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.19.14
-cd %{_builddir}/dulwich-0.19.14
+%setup -q -n dulwich-0.19.15
+cd %{_builddir}/dulwich-0.19.15
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1575276935
+export SOURCE_DATE_EPOCH=1580138712
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -89,7 +89,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dulwich
-cp %{_builddir}/dulwich-0.19.14/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
+cp %{_builddir}/dulwich-0.19.15/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
