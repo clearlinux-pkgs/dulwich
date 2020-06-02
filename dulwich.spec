@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.19.16
-Release  : 21
-URL      : https://files.pythonhosted.org/packages/6a/38/21c6077503961f338f995cdc9a7403ba0d25b5b6e5542bde88fc63d8cf37/dulwich-0.19.16.tar.gz
-Source0  : https://files.pythonhosted.org/packages/6a/38/21c6077503961f338f995cdc9a7403ba0d25b5b6e5542bde88fc63d8cf37/dulwich-0.19.16.tar.gz
-Source1  : https://files.pythonhosted.org/packages/6a/38/21c6077503961f338f995cdc9a7403ba0d25b5b6e5542bde88fc63d8cf37/dulwich-0.19.16.tar.gz.asc
+Version  : 0.20.2
+Release  : 22
+URL      : https://files.pythonhosted.org/packages/16/8e/b43e8e612cfe0e03410cd23da18094cbb78296fd56a8275f8213ac9a7699/dulwich-0.20.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/16/8e/b43e8e612cfe0e03410cd23da18094cbb78296fd56a8275f8213ac9a7699/dulwich-0.20.2.tar.gz
+Source1  : https://files.pythonhosted.org/packages/16/8e/b43e8e612cfe0e03410cd23da18094cbb78296fd56a8275f8213ac9a7699/dulwich-0.20.2.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -62,28 +62,27 @@ Summary: python3 components for the dulwich package.
 Group: Default
 Requires: python3-core
 Provides: pypi(dulwich)
-Requires: pypi(urllib3)
 Requires: pypi(certifi)
+Requires: pypi(urllib3)
 
 %description python3
 python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.19.16
-cd %{_builddir}/dulwich-0.19.16
+%setup -q -n dulwich-0.20.2
+cd %{_builddir}/dulwich-0.20.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587166002
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1591109171
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
@@ -92,7 +91,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dulwich
-cp %{_builddir}/dulwich-0.19.16/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
+cp %{_builddir}/dulwich-0.20.2/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
