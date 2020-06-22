@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.20.3
-Release  : 23
-URL      : https://files.pythonhosted.org/packages/42/4c/1da52a9a47983618a4fbbb971e29c617b43f9a63201122cccddcb53fd006/dulwich-0.20.3.tar.gz
-Source0  : https://files.pythonhosted.org/packages/42/4c/1da52a9a47983618a4fbbb971e29c617b43f9a63201122cccddcb53fd006/dulwich-0.20.3.tar.gz
-Source1  : https://files.pythonhosted.org/packages/42/4c/1da52a9a47983618a4fbbb971e29c617b43f9a63201122cccddcb53fd006/dulwich-0.20.3.tar.gz.asc
+Version  : 0.20.5
+Release  : 24
+URL      : https://files.pythonhosted.org/packages/b3/34/adcd6646c5ed59a1206216d4a418121be57df3406f7a46570112db57ba6c/dulwich-0.20.5.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b3/34/adcd6646c5ed59a1206216d4a418121be57df3406f7a46570112db57ba6c/dulwich-0.20.5.tar.gz
+Source1  : https://files.pythonhosted.org/packages/b3/34/adcd6646c5ed59a1206216d4a418121be57df3406f7a46570112db57ba6c/dulwich-0.20.5.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -27,9 +27,9 @@ BuildRequires : gevent
 BuildRequires : urllib3
 
 %description
-.. image:: https://travis-ci.org/dulwich/dulwich.png?branch=master
-:alt: Build Status
-:target: https://travis-ci.org/dulwich/dulwich
+Openstack Swift as backend for Dulwich
+======================================
+Fabien Boucher <fabien.boucher@enovance.com>
 
 %package bin
 Summary: bin components for the dulwich package.
@@ -70,15 +70,15 @@ python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.20.3
-cd %{_builddir}/dulwich-0.20.3
+%setup -q -n dulwich-0.20.5
+cd %{_builddir}/dulwich-0.20.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592237164
+export SOURCE_DATE_EPOCH=1592835572
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -91,7 +91,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dulwich
-cp %{_builddir}/dulwich-0.20.3/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
+cp %{_builddir}/dulwich-0.20.5/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
