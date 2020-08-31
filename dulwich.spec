@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x579C160D4C9E23E8 (jelmer@fsfe.org)
 #
 Name     : dulwich
-Version  : 0.20.5
-Release  : 25
-URL      : https://files.pythonhosted.org/packages/b3/34/adcd6646c5ed59a1206216d4a418121be57df3406f7a46570112db57ba6c/dulwich-0.20.5.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b3/34/adcd6646c5ed59a1206216d4a418121be57df3406f7a46570112db57ba6c/dulwich-0.20.5.tar.gz
-Source1  : https://files.pythonhosted.org/packages/b3/34/adcd6646c5ed59a1206216d4a418121be57df3406f7a46570112db57ba6c/dulwich-0.20.5.tar.gz.asc
+Version  : 0.20.6
+Release  : 26
+URL      : https://files.pythonhosted.org/packages/9e/7b/ead3cba9c4e40c4170a110612fe029ac13e0322a42767d2ae1ddfd58a9bb/dulwich-0.20.6.tar.gz
+Source0  : https://files.pythonhosted.org/packages/9e/7b/ead3cba9c4e40c4170a110612fe029ac13e0322a42767d2ae1ddfd58a9bb/dulwich-0.20.6.tar.gz
+Source1  : https://files.pythonhosted.org/packages/9e/7b/ead3cba9c4e40c4170a110612fe029ac13e0322a42767d2ae1ddfd58a9bb/dulwich-0.20.6.tar.gz.asc
 Summary  : Python Git Library
 Group    : Development/Tools
 License  : Apache-2.0 GPL-2.0
@@ -19,17 +19,18 @@ Requires: dulwich-python = %{version}-%{release}
 Requires: dulwich-python3 = %{version}-%{release}
 Requires: certifi
 Requires: fastimport
+Requires: pyinotify
 Requires: urllib3
 BuildRequires : buildreq-distutils3
 BuildRequires : certifi
 BuildRequires : fastimport
 BuildRequires : gevent
+BuildRequires : pyinotify
 BuildRequires : urllib3
 
 %description
-Openstack Swift as backend for Dulwich
-======================================
-Fabien Boucher <fabien.boucher@enovance.com>
+It aims to provide an interface to git repos (both local and remote) that
+        doesn't call out to git directly but instead uses pure Python.
 
 %package bin
 Summary: bin components for the dulwich package.
@@ -70,15 +71,15 @@ python3 components for the dulwich package.
 
 
 %prep
-%setup -q -n dulwich-0.20.5
-cd %{_builddir}/dulwich-0.20.5
+%setup -q -n dulwich-0.20.6
+cd %{_builddir}/dulwich-0.20.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592835572
+export SOURCE_DATE_EPOCH=1598908742
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -91,7 +92,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dulwich
-cp %{_builddir}/dulwich-0.20.5/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
+cp %{_builddir}/dulwich-0.20.6/COPYING %{buildroot}/usr/share/package-licenses/dulwich/9e9b8604dc428d3f50acf86a2e36d56e008672d6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
